@@ -37,12 +37,12 @@ public class JBangFXGLDemo extends GameApplication {
     private final GameFactory gameFactory = new GameFactory();
 
     /**
-     * Player object we are going to use to provide to the factory so it can start a bullet from the player center.
+     * Player object we are going to use to provide to the factory, so it can start a bullet from the player center.
      */
     private Entity player;
 
-    private static int screenWidth;
-    private static int screenHeight;
+    private static double screenWidth;
+    private static double screenHeight;
 
     /**
      * Main entry point where the application starts.
@@ -51,8 +51,8 @@ public class JBangFXGLDemo extends GameApplication {
      */
     public static void main(String[] args) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        screenWidth = (int) screenSize.getWidth();
-        screenHeight = (int) screenSize.getHeight();
+        screenWidth = screenSize.getWidth();
+        screenHeight = screenSize.getHeight();
         launch(args);
     }
 
@@ -63,8 +63,8 @@ public class JBangFXGLDemo extends GameApplication {
      */
     @Override
     protected void initSettings(GameSettings settings) {
-        settings.setHeight(screenHeight);
-        settings.setWidth(screenWidth);
+        settings.setHeight((int) screenHeight);
+        settings.setWidth((int) screenWidth);
         settings.setFullScreenAllowed(true);
         settings.setFullScreenFromStart(true);
         settings.setTitle("Oracle Java Magazine - FXGL");
@@ -102,7 +102,7 @@ public class JBangFXGLDemo extends GameApplication {
         spawn("background", new SpawnData(0, 0).put("width", getAppWidth())
                 .put("height", getAppHeight()));
         int circleRadius = 80;
-        spawn("center", new SpawnData((getAppWidth() / 2) - (circleRadius / 2), (getAppHeight() / 2) - (circleRadius / 2))
+        spawn("center", new SpawnData((getAppWidth() / 2D) - (circleRadius / 2D), (getAppHeight() / 2D) - (circleRadius / 2D))
                 .put("x", (circleRadius / 2))
                 .put("y", (circleRadius / 2))
                 .put("radius", circleRadius));
@@ -165,11 +165,11 @@ public class JBangFXGLDemo extends GameApplication {
     @Override
     protected void onUpdate(double tpf) {
         if (getGameWorld().getEntitiesByType(GameFactory.EntityType.CLOUD).size() < 10) {
-            spawn("cloud", getAppWidth() / 2, getAppHeight() / 2);
+            spawn("cloud", getAppWidth() / 2D, getAppHeight() / 2D);
         }
     }
 
-    public class GameFactory implements EntityFactory {
+    public static class GameFactory implements EntityFactory {
 
         /**
          * Types of objects we are going to use in our game.
