@@ -121,7 +121,7 @@ public class JBangFXGLDemo extends GameApplication {
                 (duke, center) -> this.player.getComponent(PlayerComponent.class).die());
         onCollisionBegin(GameFactory.EntityType.DUKE,
                 GameFactory.EntityType.CLOUD,
-                (enemy, cloud) -> this.player.getComponent(PlayerComponent.class).die());
+                (duke, cloud) -> this.player.getComponent(PlayerComponent.class).die());
         onCollisionBegin(GameFactory.EntityType.BULLET,
                 GameFactory.EntityType.CLOUD,
                 (bullet, cloud) -> {
