@@ -67,7 +67,7 @@ public class JBangFXGLDemo extends GameApplication {
         settings.setWidth((int) screenWidth);
         settings.setFullScreenAllowed(true);
         settings.setFullScreenFromStart(true);
-        settings.setTitle("Oracle Java Magazine - FXGL");
+        settings.setTitle("FXGL with JBang");
     }
 
     /**
