@@ -157,6 +157,15 @@ public class JBangFXGLDemo extends GameApplication {
         livesValue.textProperty().bind(getWorldProperties().intProperty("lives").asString());
 
         getGameScene().addUINodes(scoreLabel, scoreValue, livesLabel, livesValue);
+
+        // Animation example
+        getip("score").addListener((obs, oldValue, newValue) -> {
+            animationBuilder()
+                    .scale(scoreValue)
+                    .from(new Point2D(1, 1))
+                    .to(new Point2D(2, 2))
+                    .buildAndPlay();
+        });
     }
 
     /**
